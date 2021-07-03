@@ -39,8 +39,16 @@ class GameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_game)
 
         retroViewContainer = findViewById(R.id.retroview_container)
+        
+        val a = "English"
+        val b = Locale.getDefault().displayLanguage
+        if (a.equals(b)){
         leftGamePadContainer = findViewById(R.id.left_container)
         rightGamePadContainer = findViewById(R.id.right_container)
+        }else{
+        rightGamePadContainer = findViewById(R.id.left_container)
+        leftGamePadContainer = findViewById(R.id.right_container)   
+        }
 
         window.decorView.setOnApplyWindowInsetsListener { view, windowInsets ->
             if (resources.getBoolean(R.bool.config_fullscreen))
