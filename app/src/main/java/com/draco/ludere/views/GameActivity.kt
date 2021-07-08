@@ -136,15 +136,15 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onBackPressed() = showMenu()
+    override fun onBackPressed() = showMenu()
 
-//    override fun onDestroy() {
- //       if (menuDialog.isShowing)
- //           menuDialog.dismiss()
+    override fun onDestroy() {
+        if (menuDialog.isShowing)
+            menuDialog.dismiss()
 
-//        compositeDisposable.dispose()
-//        super.onDestroy()
-//    }
+        compositeDisposable.dispose()
+        super.onDestroy()
+    }
 
     override fun onPause() {
         if (retroView.frameRendered.value == true)
