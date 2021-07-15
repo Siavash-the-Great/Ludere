@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
         new-> just copying
         */
         val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-        InputStream in = getResources().openRawResource(R.raw.example)
-FileOutputStream out = new FileOutputStream(storagePath)
+        val in: InputStream = getResources().openRawResource(R.raw.example)
+val out: FileOutputStream = FileOutputStream(storagePath)
 byte[] buff = new byte[1024]
 int read = 0
 
