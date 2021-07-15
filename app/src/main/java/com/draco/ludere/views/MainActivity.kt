@@ -34,6 +34,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+               /*
+        new-> just copying
+        */
+    val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
+    val afile = assets.open( "example.gba" )
+    val bfile = File(storagePath + "/example.gba")
+    var inStream: InputStream? = null
+    var outStream: OutputStream? = null
+    inStream = afile
+    outStream = FileOutputStream(bfile)
+    val buffer = ByteArray(1024)
+    var length = inStream.read(buffer)
+    while (length    > 0 )
+    {
+        outStream.write(buffer, 0, length)
+        length = inStream.read(buffer)
+    }
+    inStream.close()
+    outStream.close()
+
+        /*
+        new-> just copying
+        */
+        
+        
     }
 
 
@@ -57,30 +82,6 @@ class MainActivity : AppCompatActivity() {
         send_email.visibility = View.INVISIBLE
         val relative = findViewById(R.id.relative) as RelativeLayout
         relative.setBackgroundResource(0)
-        
-        /*
-        new-> just copying
-        */
-    val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-    val afile = assets.open( "example.gba" )
-    val bfile = File(storagePath + "/example.gba")
-    var inStream: InputStream? = null
-    var outStream: OutputStream? = null
-    inStream = afile
-    outStream = FileOutputStream(bfile)
-    val buffer = ByteArray(1024)
-    var length = inStream.read(buffer)
-    while (length    > 0 )
-    {
-        outStream.write(buffer, 0, length)
-        length = inStream.read(buffer)
-    }
-    inStream.close()
-    outStream.close()
-
-        /*
-        new-> just copying
-        */
         val intent = Intent(this, GameActivity::class.java)
         startActivity(intent)
     }
