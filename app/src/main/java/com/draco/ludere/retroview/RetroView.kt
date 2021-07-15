@@ -25,7 +25,7 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
              * The path to the ROM to load.
              * Example: /data/data/<package-id>/files/example.gba
              */
-            gameFilePath = getFilesDir() + "\example.gba"
+            gameFilePath = "${filesDir}/example.gba"
 
             /*
              * Direct ROM bytes to load.
@@ -79,7 +79,7 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
 
         return variables.toTypedArray()
     }
-    
+    /*
     private fun getExternalCardDirectory(): File? {
         val storageManager = getSystemService(Context.STORAGE_SERVICE)
         try {
@@ -98,6 +98,6 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
         }
         return null
     }
-    
+    */
     
 }
