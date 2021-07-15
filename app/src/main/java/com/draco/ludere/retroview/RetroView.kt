@@ -25,7 +25,7 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
              * The path to the ROM to load.
              * Example: /data/data/<package-id>/files/example.gba
              */
-            gameFilePath = "${filesDir}/example.gba"
+            gameFilePath = context.getFilesDir().getPath() + "/example.gba"
 
             /*
              * Direct ROM bytes to load.
