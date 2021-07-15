@@ -17,10 +17,22 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
 
     private val _frameRendered = MutableLiveData(false)
     val frameRendered: LiveData<Boolean> = _frameRendered
-
+    
     private val retroViewData = GLRetroViewData(context).apply {
         coreFilePath = "libcore.so"
-        gameFileBytes = context.resources.openRawResource(R.raw.rom).use { it.readBytes() }
+      //  gameFileBytes = context.resources.openRawResource(R.raw.rom).use { it.readBytes() }
+                    /*
+             * The path to the ROM to load.
+             * Example: /data/data/<package-id>/files/example.gba
+             */
+            gameFilePath = getFilesDir() + "\example.gba"
+
+            /*
+             * Direct ROM bytes to load.
+             * This is mutually exclusive with gameFilePath.
+             */
+            gameFileBytes = null
+        
         shader = GLRetroView.SHADER_SHARP
         variables = getCoreVariables()
 
@@ -67,4 +79,25 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
 
         return variables.toTypedArray()
     }
+    
+    private fun getExternalCardDirectory(): File? {
+        val storageManager = getSystemService(Context.STORAGE_SERVICE)
+        try {
+            val storageVolumeClazz = Class.forName("android.os.storage.StorageVolume")
+            val getVolumeList = storageManager.javaClass.getMethod("getVolumeList")
+            val getPath = storageVolumeClazz.getMethod("getPath")
+            val isRemovable = storageVolumeClazz.getMethod("isRemovable")
+            val result = getVolumeList.invoke(storageManager) as Array<StorageVolume>
+            result.forEach {
+                if (isRemovable.invoke(it) as Boolean) {
+                    return File(getPath.invoke(it) as String)
+                }
+            }
+        } catch (e: Throwable) {
+            e.printStackTrace()
+        }
+        return null
+    }
+    
+    
 }
