@@ -18,6 +18,11 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
     private val _frameRendered = MutableLiveData(false)
     val frameRendered: LiveData<Boolean> = _frameRendered
     
+    val storagePath: String = (context.getExternalFilesDir(null) ?: context.filesDir).path
+   // val sram = File("$storagePath/sram")
+   // val state = File("$storagePath/state")
+   // val tempState = File("$storagePath/tempstate")
+    
     private val retroViewData = GLRetroViewData(context).apply {
         coreFilePath = "libcore.so"
       //  gameFileBytes = context.resources.openRawResource(R.raw.rom).use { it.readBytes() }
@@ -25,7 +30,7 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
              * The path to the ROM to load.
              * Example: /data/data/<package-id>/files/example.gba
              */
-            gameFilePath = context.getFilesDir().getPath() + "/example.gba"
+            gameFilePath = "$storagePath/example.gba"
 
             /*
              * Direct ROM bytes to load.
