@@ -57,20 +57,23 @@ class MainActivity : AppCompatActivity() {
         /*
         new-> just copying
         */
-        val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-        val in = InputStream(getResources().openRawResource(R.raw.example))
-val out = FileOutputStream(storagePath)
-byte[] buff = new byte[1024]
-int read = 0
+    val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
+    val afile = assets.open( "example.gba" )
+    val bfile = File(storagePath + "/example.gba")
+    var inStream: InputStream? = null
+    var outStream: OutputStream? = null
+    inStream = afile
+    outStream = FileOutputStream(bfile)
+    val buffer = ByteArray(1024)
+    var length = inStream.read(buffer)
+    while (length    > 0 )
+    {
+        outStream.write(buffer, 0, length)
+        length = inStream.read(buffer)
+    }
+    inStream.close()
+    outStream.close()
 
-try {
-   while ((read = in.read(buff)) > 0) {
-      out.write(buff, 0, read)
-   }
-} finally {
-     in.close()
-     out.close()
-}
         /*
         new-> just copying
         */
