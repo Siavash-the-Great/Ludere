@@ -30,7 +30,7 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
              * The path to the ROM to load.
              * Example: /data/data/<package-id>/files/example.gba
              */
-            gameFilePath = "$storagePath/example.gba"
+            gameFilePath = "$storagePath/example.sfc"
 
             /*
              * Direct ROM bytes to load.
