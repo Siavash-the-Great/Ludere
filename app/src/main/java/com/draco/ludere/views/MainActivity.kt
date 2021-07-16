@@ -38,8 +38,8 @@ class MainActivity : AppCompatActivity() {
         new-> just copying
         */
     val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-    val afile = assets.open( "example.gba" )
-    val bfile = File(storagePath + "/example.gba")
+    val afile = assets.open( "example.sfc" )
+    val bfile = File(storagePath + "/example.sfc")
     var inStream: InputStream? = null
     var outStream: OutputStream? = null
     inStream = afile
