@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
     fun sendMsg(view: View) {
         val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.ZombieNation")
+        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.magicCarpet")
         startActivity(openURL)
     }
 
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
     fun goToPage(view: View) {
         val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.ZombieNation")
+        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.magicCarpet")
         startActivity(openURL)
     }
 
