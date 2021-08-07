@@ -45,7 +45,7 @@ class InterstitialActivity : AppCompatActivity() {
         Tapsell.requestAd(this@InterstitialActivity,
             if (type == AdType.BANNER) "610ed8bc35114c6ff3a596ee" else
                 "610ecc7d260bc85635a14601", options,
-            object : TapsellAdRequestListener {
+            object() : TapsellAdRequestListener {
                 override fun onAdAvailable(ad: TapsellAd?) {
                     if (isDestroyed)
                         return
@@ -76,7 +76,7 @@ class InterstitialActivity : AppCompatActivity() {
         ad?.let {
             val showOptions = TapsellShowOptions()
             showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
-            it.show(this@InterstitialActivity, showOptions, object : TapsellAdShowListener {
+            it.show(this@InterstitialActivity, showOptions, object() : TapsellAdShowListener {
                 override fun onOpened(ad: TapsellAd) {
                     Log.e("InterstitialActivity", "on ad opened")
                 }
