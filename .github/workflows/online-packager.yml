@@ -29,7 +29,7 @@ jobs:
       - name: Build Release APK
         run: |
           chmod +x ./gradlew
-          ./gradlew assembleRelease --stacktrace
+          ./gradlew assembleRelease --info
           
       - name: Get Date
         id: date
