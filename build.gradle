@@ -4,6 +4,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+                maven {
+            url 'https://dl.bintray.com/tapsellorg/maven'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.0-alpha15'
