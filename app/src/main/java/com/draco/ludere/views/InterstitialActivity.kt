@@ -26,8 +26,9 @@ class InterstitialActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_interstitial)
-
+         val Constraint = findViewById(R.id.Constraint) as ConstraintLayout 
+        //setContentView(R.layout.activity_interstitial)
+setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         initView()
