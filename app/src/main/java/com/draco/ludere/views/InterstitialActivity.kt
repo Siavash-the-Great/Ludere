@@ -9,7 +9,7 @@ import ir.tapsell.sdk.*
 import ir.tapsell.sdk.TapsellAdRequestOptions.CACHE_TYPE_STREAMED
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
-import com.draco.ludere.views.R
+import android.R
 import kotlinx.android.synthetic.main.activity_interstitial.*
 class InterstitialActivity : AppCompatActivity() {
 
