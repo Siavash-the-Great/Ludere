@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         // Do something in response to button click
         
         val banner = findViewById(R.id.banner) as TapsellBannerView
-        banner.loadAd(this, ZONE_ID, TapsellBannerType.BANNER_300x250)//Zone_ID should be inserted for each app
+        banner.loadAd(this, "ssfskoqkojqmpdtfpbiidrbamjjitdfhhepjrhepprfppatigbpgrhdnqfgiciefntdahq", TapsellBannerType.BANNER_300x250)//Zone_ID should be inserted for each app
         
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
         start_the_game_button.isEnabled = false
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     fun sendMsg(view: View) {
         val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.RingKing")
+        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.Test")
         startActivity(openURL)
     }
 
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     fun goToPage(view: View) {
         val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.RingKing")
+        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.Test")
         startActivity(openURL)
     }
 
