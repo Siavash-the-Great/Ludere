@@ -1,13 +1,14 @@
 package com.draco.ludere.views
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import ir.tapsell.sdk.*
 import ir.tapsell.sdk.TapsellAdRequestOptions.CACHE_TYPE_STREAMED
-import kotlinx.android.synthetic.main.activity_reward.*
+import kotlinx.android.synthetic.main.activity_interstitial.*
 
-class RewardActivity : AppCompatActivity() {
+class InterstitialActivity : AppCompatActivity() {
 
     var ad: TapsellAd? = null
 
@@ -23,25 +24,32 @@ class RewardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reward)
+        setContentView(R.layout.activity_interstitial)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        btnRewardBanner.setOnClickListener {
-            requestAd()
-        }
+        initView()
     }
 
-    private fun requestAd() {
+    private fun initView() {
+        btnInterstitialBanner.setOnClickListener { requestInterstitialBannerAd(AdType.BANNER) }
+        btnInterstitialVideo.setOnClickListener { requestInterstitialBannerAd(AdType.VIDEO) }
+        btnShowAd.setOnClickListener { showAd() }
+        btnShowAd.isEnabled = false
+    }
+
+    private fun requestInterstitialBannerAd(type: AdType) {
         val options = TapsellAdRequestOptions(CACHE_TYPE_STREAMED)
-        Tapsell.requestAd(this@RewardActivity, "ssfskoqkojqmpdtfpbiidrbamjjitdfhhepjrhepprfppatigbpgrhdnqfgiciefntdahq", options,
+        Tapsell.requestAd(this@InterstitialActivity,
+            if (type == AdType.BANNER) BuildConfig.TAPSELL_INTERSTITIAL_BANNER else
+                BuildConfig.TAPSELL_INTERSTITIAL_VIDEO, options,
             object : TapsellAdRequestListener {
                 override fun onAdAvailable(ad: TapsellAd?) {
                     if (isDestroyed)
                         return
 
-                    this@RewardActivity.ad = ad
-                    showAd()
+                    this@InterstitialActivity.ad = ad
+                    btnShowAd.isEnabled = true
                 }
 
                 override fun onExpiring(ad: TapsellAd?) {
@@ -66,19 +74,24 @@ class RewardActivity : AppCompatActivity() {
         ad?.let {
             val showOptions = TapsellShowOptions()
             showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_PORTRAIT
-            it.show(this@RewardActivity, showOptions, object : TapsellAdShowListener {
+            it.show(this@InterstitialActivity, showOptions, object : TapsellAdShowListener {
                 override fun onOpened(ad: TapsellAd) {
-                    Log.e("RewardActivity", "on ad opened")
+                    Log.e("InterstitialActivity", "on ad opened")
                 }
 
                 override fun onClosed(ad: TapsellAd) {
-                    Log.e("RewardActivity", "on ad closed")
+                    Log.e("InterstitialActivity", "on ad closed")
                 }
             })
         } ?: run {
-            Log.e("RewardActivity", "ad is not available")
+            Log.e("InterstitialActivity", "ad is not available")
         }
 
+        btnShowAd.isEnabled = false
         ad = null
     }
+}
+
+enum class AdType {
+    BANNER, VIDEO
 }
