@@ -73,7 +73,7 @@ class InterstitialActivity : AppCompatActivity() {
     private fun showAd() {
         ad?.let {
             val showOptions = TapsellShowOptions()
-            showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_PORTRAIT
+            showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
             it.show(this@InterstitialActivity, showOptions, object : TapsellAdShowListener {
                 override fun onOpened(ad: TapsellAd) {
                     Log.e("InterstitialActivity", "on ad opened")
