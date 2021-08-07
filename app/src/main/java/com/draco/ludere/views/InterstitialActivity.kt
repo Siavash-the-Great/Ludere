@@ -9,7 +9,6 @@ import ir.tapsell.sdk.TapsellAdRequestOptions.CACHE_TYPE_STREAMED
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import kotlinx.android.synthetic.main.activity_interstitial.*
-import com.draco.ludere.views.R
 class InterstitialActivity : AppCompatActivity() {
 
     var ad: TapsellAd? = null
