@@ -49,16 +49,5 @@
     android:layout_below="@id/start_the_game_button"    
     android:onClick="exit_game" />
     
-    
-        <ir.tapsell.sdk.bannerads.TapsellBannerView
-        android:id="@+id/bannerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:tapsell_banner_type="banner_320x50"
-        app:tapsell_zone_id="ssfskoqkojqmpdtfpbiidrbamjjitdfhhepjrhepprfppatigbpgrhdnqfgiciefntdahq" />
-    
-
-    
 
 </RelativeLayout>
