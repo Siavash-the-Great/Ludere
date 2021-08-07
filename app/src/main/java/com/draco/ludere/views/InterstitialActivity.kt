@@ -6,7 +6,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import ir.tapsell.sdk.*
 import ir.tapsell.sdk.TapsellAdRequestOptions.CACHE_TYPE_STREAMED
-import androidx.constraintlayout.widget.ConstraintLayout
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import kotlinx.android.synthetic.main.activity_interstitial.*
