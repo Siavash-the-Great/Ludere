@@ -31,8 +31,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -41,7 +41,7 @@ android {
     splits {
         abi {
             enable true
-            include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+            include 'x86'
             universalApk true
         }
     }
@@ -57,7 +57,7 @@ android {
 
 task prepareCore {
     delete "${rootProject.projectDir}/app/src/main/jniLibs"
-    for (abi in ['x86', 'x86_64','armeabi-v7a', 'arm64-v8a']) {
+    for (abi in ['x86']) {
         file("${rootProject.projectDir}/app/src/main/jniLibs/$abi").mkdirs()
         download {
             src "https://buildbot.libretro.com/nightly/android/latest/$abi/${configValue('config_core')}_libretro_android.so.zip"
