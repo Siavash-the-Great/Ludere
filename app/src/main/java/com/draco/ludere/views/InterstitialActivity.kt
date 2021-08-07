@@ -9,7 +9,6 @@ import ir.tapsell.sdk.*
 import ir.tapsell.sdk.TapsellAdRequestOptions.CACHE_TYPE_STREAMED
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
-import android.R
 import kotlinx.android.synthetic.main.activity_interstitial.*
 class InterstitialActivity : AppCompatActivity() {
 
@@ -28,7 +27,7 @@ class InterstitialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // val Constraint = findViewById(R.id.Constraint) as ConstraintLayout 
-        setContentView(com.draco.ludere.views.R.layout.activity_interstitial)
+        setContentView(com.draco.ludere.R.layout.activity_interstitial)
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
