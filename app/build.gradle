@@ -75,6 +75,9 @@ task prepareCore {
 }
 
 dependencies {
+
+    implementation 'ir.tapsell.sdk:tapsell-sdk-android:4.7.2'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
