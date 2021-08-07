@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     fun start(view: View) {
         // Do something in response to button click
                     startActivity(Intent(this@MainActivity, InterstitialActivity::class.java))
-                    
+  /*                  
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
         start_the_game_button.isEnabled = false
         start_the_game_button.visibility = View.INVISIBLE
@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         relative.setBackgroundResource(0)
         val intent = Intent(this, GameActivity::class.java)
         startActivity(intent)
+        */
     }
 
     fun sendMsg(view: View) {
