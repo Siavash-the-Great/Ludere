@@ -1,5 +1,4 @@
-package ir.tapsell.kotlinsample
-
+package com.draco.ludere.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
