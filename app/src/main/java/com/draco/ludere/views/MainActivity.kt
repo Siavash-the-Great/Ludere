@@ -23,6 +23,9 @@ import com.draco.ludere.retroview.RetroView
 import com.draco.ludere.utils.RetroViewUtils
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.*
+import ir.tapsell.sdk.bannerads.TapsellBannerType
+import ir.tapsell.sdk.bannerads.TapsellBannerView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +38,10 @@ class MainActivity : AppCompatActivity() {
     /** Called when the user touches the button */
     fun start(view: View) {
         // Do something in response to button click
+        
+        val banner = findViewById(R.id.banner) as TapsellBannerView
+        banner.loadAd(this, ZONE_ID, TapsellBannerType.BANNER_300x250)//Zone_ID should be inserted for each app
+        
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
         start_the_game_button.isEnabled = false
         start_the_game_button.visibility = View.INVISIBLE
