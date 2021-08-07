@@ -38,9 +38,8 @@ class MainActivity : AppCompatActivity() {
     /** Called when the user touches the button */
     fun start(view: View) {
         // Do something in response to button click
-        
-            startActivity(Intent(this@MainActivity, RewardActivity::class.java))
-        
+                    startActivity(Intent(this@MainActivity, InterstitialActivity::class.java))
+                    
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
         start_the_game_button.isEnabled = false
         start_the_game_button.visibility = View.INVISIBLE
