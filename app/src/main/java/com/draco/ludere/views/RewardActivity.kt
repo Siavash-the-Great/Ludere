@@ -35,7 +35,7 @@ class RewardActivity : AppCompatActivity() {
 
     private fun requestAd() {
         val options = TapsellAdRequestOptions(CACHE_TYPE_STREAMED)
-        Tapsell.requestAd(this@RewardActivity, BuildConfig.TAPSELL_REWARDED_VIDEO, options,
+        Tapsell.requestAd(this@RewardActivity, "ssfskoqkojqmpdtfpbiidrbamjjitdfhhepjrhepprfppatigbpgrhdnqfgiciefntdahq", options,
             object : TapsellAdRequestListener {
                 override fun onAdAvailable(ad: TapsellAd?) {
                     if (isDestroyed)
