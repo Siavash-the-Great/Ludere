@@ -39,8 +39,7 @@ class MainActivity : AppCompatActivity() {
     fun start(view: View) {
         // Do something in response to button click
         
-        val banner = findViewById(R.id.banner) as TapsellBannerView
-        banner.loadAd(this, "ssfskoqkojqmpdtfpbiidrbamjjitdfhhepjrhepprfppatigbpgrhdnqfgiciefntdahq", TapsellBannerType.BANNER_300x250)//Zone_ID should be inserted for each app
+            startActivity(Intent(this@MainActivity, RewardActivity::class.java))
         
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
         start_the_game_button.isEnabled = false
