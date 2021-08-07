@@ -19,6 +19,7 @@ android {
         versionCode 1
         versionName '1.0'
         resConfigs 'en'
+        multiDexEnabled true
         buildConfigField "String", "TAPSELL_KEY", "\"ssfskoqkojqmpdtfpbiidrbamjjitdfhhepjrhepprfppatigbpgrhdnqfgiciefntdahq\""
         buildConfigField "String", "TAPSELL_INTERSTITIAL_BANNER", "\"610ed8bc35114c6ff3a596ee\""
         buildConfigField "String", "TAPSELL_INTERSTITIAL_VIDEO", "\"610ecc7d260bc85635a14601\""
