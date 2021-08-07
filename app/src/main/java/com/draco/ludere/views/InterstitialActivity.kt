@@ -1,5 +1,6 @@
 package com.draco.ludere.views
-
+import android.widget.Button
+import android.widget.RelativeLayout
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -26,7 +27,7 @@ class InterstitialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // val Constraint = findViewById(R.id.Constraint) as ConstraintLayout 
-        setContentView(R.layout.activity_interstitial)
+        setContentView(com.draco.ludere.views.R.layout.activity_interstitial)
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
