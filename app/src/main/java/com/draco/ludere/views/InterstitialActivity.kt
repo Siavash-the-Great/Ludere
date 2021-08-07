@@ -43,8 +43,8 @@ class InterstitialActivity : AppCompatActivity() {
     private fun requestInterstitialBannerAd(type: AdType) {
         val options = TapsellAdRequestOptions(CACHE_TYPE_STREAMED)
         Tapsell.requestAd(this@InterstitialActivity,
-            if (type == AdType.BANNER) BuildConfig.TAPSELL_INTERSTITIAL_BANNER else
-                BuildConfig.TAPSELL_INTERSTITIAL_VIDEO, options,
+            if (type == AdType.BANNER) "610ed8bc35114c6ff3a596ee" else
+                "610ecc7d260bc85635a14601", options,
             object : TapsellAdRequestListener {
                 override fun onAdAvailable(ad: TapsellAd?) {
                     if (isDestroyed)
