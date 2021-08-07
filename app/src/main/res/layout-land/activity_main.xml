@@ -49,11 +49,7 @@
     android:layout_below="@id/start_the_game_button"    
     android:onClick="exit_game" />
     
-    <ir.tapsell.sdk.bannerads.TapsellBannerView
-    android:id="@+id/banner"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:tapsell_banner_type="banner_300x250" />
+
     
 
 </RelativeLayout>
