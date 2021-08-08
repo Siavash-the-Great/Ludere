@@ -52,7 +52,7 @@ class InterstitialActivity : AppCompatActivity() {
         btnInterstitialBanner.setOnClickListener { requestInterstitialBannerAd(AdType.BANNER) }
         btnInterstitialVideo.setOnClickListener { requestInterstitialBannerAd(AdType.VIDEO) }
         btnShowAd.setOnClickListener { showAd() }
-        btnShowAd.isEnabled = false
+        btnShowAd.isEnabled = true
     }
 
     private fun requestInterstitialBannerAd(type: AdType) {
