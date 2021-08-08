@@ -39,8 +39,8 @@ class InterstitialActivity : AppCompatActivity() {
    //     requestInterstitialBannerAd(AdType.VIDEO) 
     //    showAd() 
       //  btnInterstitialBanner.performClick()
-        btnInterstitialVideo.performClick()
-        btnShowAd.performClick()
+        btnInterstitialVideo.callOnClick()
+        btnShowAd.callOnClick()()
         /*
         */
         
