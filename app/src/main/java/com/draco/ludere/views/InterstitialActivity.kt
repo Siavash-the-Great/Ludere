@@ -38,7 +38,7 @@ class InterstitialActivity : AppCompatActivity() {
        // requestInterstitialBannerAd(AdType.BANNER)
    //     requestInterstitialBannerAd(AdType.VIDEO) 
     //    showAd() 
-        btnInterstitialBanner.performClick()
+      //  btnInterstitialBanner.performClick()
         btnInterstitialVideo.performClick()
         btnShowAd.performClick()
         /*
@@ -66,7 +66,7 @@ class InterstitialActivity : AppCompatActivity() {
                         return
 
                     this@InterstitialActivity.ad = ad
-                 //   btnShowAd.isEnabled = true
+                    btnShowAd.isEnabled = true
                 }
 
                 override fun onExpiring(ad: TapsellAd?) {
@@ -104,7 +104,7 @@ class InterstitialActivity : AppCompatActivity() {
             Log.e("InterstitialActivity", "ad is not available")
         }
 
-     //   btnShowAd.isEnabled = false
+        btnShowAd.isEnabled = false
         ad = null
     }
 }
