@@ -31,15 +31,16 @@ class InterstitialActivity : AppCompatActivity() {
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-     //   initView()
+        initView()
         
         /*new code
         */
-        requestInterstitialBannerAd(AdType.BANNER)
-        requestInterstitialBannerAd(AdType.VIDEO) 
-        showAd() 
-        
-        
+       // requestInterstitialBannerAd(AdType.BANNER)
+   //     requestInterstitialBannerAd(AdType.VIDEO) 
+    //    showAd() 
+        btnInterstitialBanner.performClick()
+        btnInterstitialVideo.performClick()
+        btnShowAd.performClick()
         /*
         */
         
