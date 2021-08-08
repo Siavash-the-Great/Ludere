@@ -27,14 +27,27 @@ class InterstitialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // val Constraint = findViewById(R.id.Constraint) as ConstraintLayout 
-        setContentView(com.draco.ludere.R.layout.activity_interstitial)
+       // setContentView(com.draco.ludere.R.layout.activity_interstitial)
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         initView()
+        
+        /*new code
+        */
+        requestInterstitialBannerAd(AdType.BANNER)
+        requestInterstitialBannerAd(AdType.VIDEO) 
+        showAd() 
+        
+        
+        /*
+        */
+        
+        
     }
 
     private fun initView() {
+    
         btnInterstitialBanner.setOnClickListener { requestInterstitialBannerAd(AdType.BANNER) }
         btnInterstitialVideo.setOnClickListener { requestInterstitialBannerAd(AdType.VIDEO) }
         btnShowAd.setOnClickListener { showAd() }
