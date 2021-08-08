@@ -27,7 +27,7 @@ class InterstitialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // val Constraint = findViewById(R.id.Constraint) as ConstraintLayout 
-       // setContentView(com.draco.ludere.R.layout.activity_interstitial)
+        setContentView(com.draco.ludere.R.layout.activity_interstitial)
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
