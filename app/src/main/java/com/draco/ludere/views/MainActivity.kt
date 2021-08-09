@@ -41,10 +41,8 @@ class MainActivity : AppCompatActivity() {
     /** Called when the user touches the button */
     fun start(view: View) {
         // Do something in response to button click
-         requestInterstitialBannerAd(AdType.BANNER) 
-         requestInterstitialBannerAd(AdType.VIDEO)
-         showAd()
-               //     startActivity(Intent(this@MainActivity, InterstitialActivity::class.java))
+
+                    startActivity(Intent(this@MainActivity, InterstitialActivity::class.java))
   /*                  
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
         start_the_game_button.isEnabled = false
@@ -94,64 +92,10 @@ class MainActivity : AppCompatActivity() {
         exitProcess(0)
     }
 
-    
-        private fun requestInterstitialBannerAd(type: AdType) {
-        val options = TapsellAdRequestOptions(CACHE_TYPE_STREAMED)
-        Tapsell.requestAd(this@MainActivity,
-            if (type == AdType.BANNER) "610ed8bc35114c6ff3a596ee" else
-                "610ecc7d260bc85635a14601", options,
-            object : TapsellAdRequestListener() {
-                override fun onAdAvailable(ad: TapsellAd?) {
-                    if (isDestroyed)
-                        return
-
-                    this@MainActivity.ad = ad
-                    btnShowAd.isEnabled = true
-                }
-
-                override fun onExpiring(ad: TapsellAd?) {
-                    TODO("not implemented")
-                }
-
-                override fun onNoAdAvailable() {
-                    TODO("not implemented")
-                }
-
-                override fun onError(str: String?) {
-                    TODO("not implemented")
-                }
-
-                override fun onNoNetwork() {
-                    TODO("not implemented")
-                }
-            })
-    }
-
-    private fun showAd() {
-        ad?.let {
-            val showOptions = TapsellShowOptions()
-            showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
-            it.show(this@MainActivity, showOptions, object : TapsellAdShowListener() {
-                override fun onOpened(ad: TapsellAd) {
-                    Log.e("InterstitialActivity", "on ad opened")
-                }
-
-                override fun onClosed(ad: TapsellAd) {
-                    Log.e("InterstitialActivity", "on ad closed")
-                }
-            })
-        } ?: run {
-            Log.e("InterstitialActivity", "ad is not available")
-        }
-
-        btnShowAd.isEnabled = false
-        ad = null
-    }
+   
 }
 
 
     
-}
-enum class AdType {
-    BANNER, VIDEO
-}
+
+
