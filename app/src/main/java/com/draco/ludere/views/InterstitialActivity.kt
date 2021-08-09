@@ -35,11 +35,11 @@ class InterstitialActivity : AppCompatActivity() {
         
         /*new code
         */
-         val btnInterstitial = findViewById(com.draco.ludere.R.id.btnInterstitialBanner) as Button
+         val btn = findViewById(com.draco.ludere.R.id.btnInterstitialBanner) as Button
          val btnInterstitial = findViewById(com.draco.ludere.R.id.btnInterstitialVideo) as Button
          val btnShow = findViewById(com.draco.ludere.R.id.btnShowAd) as Button
 
-        btnInterstitial.setOnClickListener { requestInterstitialBannerAd(AdType.BANNER) }
+        btn.setOnClickListener { requestInterstitialBannerAd(AdType.BANNER) }
         btnInterstitial.setOnClickListener { requestInterstitialBannerAd(AdType.VIDEO) }
         btnShow.setOnClickListener { showAd() }
       //  btnInterstitialBanner.performClick()
