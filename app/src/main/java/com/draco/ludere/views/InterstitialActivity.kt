@@ -27,7 +27,7 @@ class InterstitialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // val Constraint = findViewById(R.id.Constraint) as ConstraintLayout 
-        setContentView(com.draco.ludere.R.layout.activity_interstitial)
+//        setContentView(com.draco.ludere.R.layout.activity_interstitial)
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -39,11 +39,22 @@ class InterstitialActivity : AppCompatActivity() {
                 "610ecc7d260bc85635a14601", options,
             object : TapsellAdRequestListener() {
                 override fun onAdAvailable(ad: TapsellAd?) {
-                    if (isDestroyed)
-                        return
 
-                    this@InterstitialActivity.ad = ad
-                    btnShowAd.isEnabled = true
+           val showOptions = TapsellShowOptions()
+            showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
+            Tapsell.showAd(this@InterstitialActivity, showOptions, object : TapsellAdShowListener() {
+                override fun onOpened(ad: TapsellAd) {
+                    Log.e("InterstitialActivity", "on ad opened")
+                }
+
+                override fun onClosed(ad: TapsellAd) {
+                    Log.e("InterstitialActivity", "on ad closed")
+                }
+            })
+        } ?: run {
+            Log.e("InterstitialActivity", "ad is not available")
+                    
+                    
                 }
 
                 override fun onExpiring(ad: TapsellAd?) {
@@ -63,25 +74,9 @@ class InterstitialActivity : AppCompatActivity() {
                 }
             })
         
-        
-        ad?.let {
-            val showOptions = TapsellShowOptions()
-            showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
-            it.show(this@InterstitialActivity, showOptions, object : TapsellAdShowListener() {
-                override fun onOpened(ad: TapsellAd) {
-                    Log.e("InterstitialActivity", "on ad opened")
-                }
 
-                override fun onClosed(ad: TapsellAd) {
-                    Log.e("InterstitialActivity", "on ad closed")
-                }
-            })
-        } ?: run {
-            Log.e("InterstitialActivity", "ad is not available")
-        }
 
-        btnShowAd.isEnabled = false
-        ad = null
+
     
         
         
