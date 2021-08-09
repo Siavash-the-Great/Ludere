@@ -64,7 +64,7 @@ class InterstitialActivity : AppCompatActivity() {
             })
         
         
-                ad?.let {
+        ad?.let {
             val showOptions = TapsellShowOptions()
             showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
             it.show(this@InterstitialActivity, showOptions, object : TapsellAdShowListener() {
