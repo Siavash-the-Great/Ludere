@@ -42,7 +42,7 @@ class InterstitialActivity : AppCompatActivity() {
 
            val showOptions = TapsellShowOptions()
             showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
-            Tapsell.showAd(this@InterstitialActivity, showOptions, object : TapsellAdShowListener() {
+            Tapsell.showAd(this@InterstitialActivity, "610ecc7d260bc85635a14601" , ad , showOptions, object : TapsellAdShowListener() {
                 override fun onOpened(ad: TapsellAd) {
                     Log.e("InterstitialActivity", "on ad opened")
                 }
@@ -51,8 +51,7 @@ class InterstitialActivity : AppCompatActivity() {
                     Log.e("InterstitialActivity", "on ad closed")
                 }
             })
-        } ?: run {
-            Log.e("InterstitialActivity", "ad is not available")
+
                     
                     
                 }
