@@ -49,6 +49,7 @@ class InterstitialActivity : AppCompatActivity() {
 
                 override fun onClosed(ad: TapsellAd) {
                     Log.e("InterstitialActivity", "on ad closed")
+                    startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
             })
 
