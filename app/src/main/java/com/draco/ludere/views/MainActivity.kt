@@ -41,7 +41,10 @@ class MainActivity : AppCompatActivity() {
     /** Called when the user touches the button */
     fun start(view: View) {
         // Do something in response to button click
-
+	                val ConnectionManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkInfo = ConnectionManager.activeNetworkInfo
+            if (networkInfo != null && networkInfo.isConnected == true) {
+            //    Toast.makeText(this@MainActivity, "Network Available", Toast.LENGTH_LONG).show()
                     startActivity(Intent(this@MainActivity, InterstitialActivity::class.java))
   /*                  
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
@@ -61,9 +64,14 @@ class MainActivity : AppCompatActivity() {
         send_email.visibility = View.INVISIBLE
         val relative = findViewById(R.id.relative) as RelativeLayout
         relative.setBackgroundResource(0)
+         } else {
         val intent = Intent(this, GameActivity::class.java)
         startActivity(intent)
         */
+          } else {
+        val intent = Intent(this, GameActivity::class.java)
+        startActivity(intent)
+            }
     }
 
     fun sendMsg(view: View) {
