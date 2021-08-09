@@ -82,7 +82,7 @@ class InterstitialActivity : AppCompatActivity() {
 
         btnShowAd.isEnabled = false
         ad = null
-    }
+    
         
         
         
