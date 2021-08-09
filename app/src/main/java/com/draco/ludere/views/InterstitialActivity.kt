@@ -31,13 +31,17 @@ class InterstitialActivity : AppCompatActivity() {
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        initView()
+     //   initView()
         
         /*new code
         */
-       // requestInterstitialBannerAd(AdType.BANNER)
-   //     requestInterstitialBannerAd(AdType.VIDEO) 
-    //    showAd() 
+         val btnInterstitialBanner = findViewById(R.id.btnInterstitialBanner) as Button
+         val btnInterstitialVideo = findViewById(R.id.btnInterstitialVideo) as Button
+         val btnShowAd = findViewById(R.id.btnShowAd) as Button
+
+        btnInterstitialBanner.setOnClickListener { requestInterstitialBannerAd(AdType.BANNER) }
+        btnInterstitialVideo.setOnClickListener { requestInterstitialBannerAd(AdType.VIDEO) }
+        btnShowAd.setOnClickListener { showAd() }
       //  btnInterstitialBanner.performClick()
         btnInterstitialVideo.callOnClick()
         btnShowAd.callOnClick()
