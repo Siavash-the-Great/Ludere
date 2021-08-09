@@ -60,22 +60,22 @@ class InterstitialActivity : AppCompatActivity() {
                 }
 
                 override fun onExpiring(ad: TapsellAd?) {
-                    TODO("not implemented")
+                   // TODO("not implemented")
                                         startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
 
                 override fun onNoAdAvailable() {
-                    TODO("not implemented")
+                //    TODO("not implemented")
                                         startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
 
                 override fun onError(str: String?) {
-                    TODO("not implemented")
+                 //  TODO("not implemented")
                                         startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
 
                 override fun onNoNetwork() {
-                    TODO("not implemented")
+                //    TODO("not implemented")
                                         startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
             })
