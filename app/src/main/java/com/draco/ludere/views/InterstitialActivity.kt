@@ -10,6 +10,8 @@ import ir.tapsell.sdk.TapsellAdRequestOptions.CACHE_TYPE_STREAMED
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import kotlinx.android.synthetic.main.activity_interstitial.*
+import android.content.Intent
+
 class InterstitialActivity : AppCompatActivity() {
 
     var ad: TapsellAd? = null
@@ -59,18 +61,22 @@ class InterstitialActivity : AppCompatActivity() {
 
                 override fun onExpiring(ad: TapsellAd?) {
                     TODO("not implemented")
+                                        startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
 
                 override fun onNoAdAvailable() {
                     TODO("not implemented")
+                                        startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
 
                 override fun onError(str: String?) {
                     TODO("not implemented")
+                                        startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
 
                 override fun onNoNetwork() {
                     TODO("not implemented")
+                                        startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
                 }
             })
         
