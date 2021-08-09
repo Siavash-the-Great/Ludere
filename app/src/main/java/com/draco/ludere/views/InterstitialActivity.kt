@@ -38,7 +38,7 @@ class InterstitialActivity : AppCompatActivity() {
             //if (type == AdType.BANNER) "610ed8bc35114c6ff3a596ee" else
                 "610ecc7d260bc85635a14601", options,
             object : TapsellAdRequestListener() {
-                override fun onAdAvailable(ad: TapsellAd?) {
+                override fun onAdAvailable(ad: String) {
 
            val showOptions = TapsellShowOptions()
             showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
