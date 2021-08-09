@@ -31,22 +31,59 @@ class InterstitialActivity : AppCompatActivity() {
 //setContentView(Constraint)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-     //   initView()
         
-        /*new code
-        */
-         val btn = findViewById(com.draco.ludere.R.id.btnInterstitialBanner) as Button
-         val btnInterstitial = findViewById(com.draco.ludere.R.id.btnInterstitialVideo) as Button
-         val btnShow = findViewById(com.draco.ludere.R.id.btnShowAd) as Button
+        
+                val options = TapsellAdRequestOptions(CACHE_TYPE_STREAMED)
+        Tapsell.requestAd(this@InterstitialActivity,
+            //if (type == AdType.BANNER) "610ed8bc35114c6ff3a596ee" else
+                "610ecc7d260bc85635a14601", options,
+            object : TapsellAdRequestListener() {
+                override fun onAdAvailable(ad: TapsellAd?) {
+                    if (isDestroyed)
+                        return
 
-        btn.setOnClickListener { requestInterstitialBannerAd(AdType.BANNER) }
-        btnInterstitial.setOnClickListener { requestInterstitialBannerAd(AdType.VIDEO) }
-        btnShow.setOnClickListener { showAd() }
-      //  btnInterstitialBanner.performClick()
-        btnInterstitial.callOnClick()
-        btnShow.callOnClick()
-        /*
-        */
+                    this@InterstitialActivity.ad = ad
+                    btnShowAd.isEnabled = true
+                }
+
+                override fun onExpiring(ad: TapsellAd?) {
+                    TODO("not implemented")
+                }
+
+                override fun onNoAdAvailable() {
+                    TODO("not implemented")
+                }
+
+                override fun onError(str: String?) {
+                    TODO("not implemented")
+                }
+
+                override fun onNoNetwork() {
+                    TODO("not implemented")
+                }
+            })
+        
+        
+                ad?.let {
+            val showOptions = TapsellShowOptions()
+            showOptions.rotationMode = TapsellShowOptions.ROTATION_LOCKED_LANDSCAPE
+            it.show(this@InterstitialActivity, showOptions, object : TapsellAdShowListener() {
+                override fun onOpened(ad: TapsellAd) {
+                    Log.e("InterstitialActivity", "on ad opened")
+                }
+
+                override fun onClosed(ad: TapsellAd) {
+                    Log.e("InterstitialActivity", "on ad closed")
+                }
+            })
+        } ?: run {
+            Log.e("InterstitialActivity", "ad is not available")
+        }
+
+        btnShowAd.isEnabled = false
+        ad = null
+    }
+        
         
         
     }
