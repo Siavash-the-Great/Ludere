@@ -29,7 +29,11 @@ jobs:
       - name: Build Release APK
         run: |
           chmod +x ./gradlew
-          ./gradlew assembleRelease
+          ./gradlew bundleRelease
+          
+      - name: get apk name
+        run: find /home/runner/work/ -name "*.aab"        
+          
           
       - name: Get Date
         id: date
