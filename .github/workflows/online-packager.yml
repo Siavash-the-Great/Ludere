@@ -55,6 +55,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /home/runner/work/Ludere/Ludere/app/build/outputs/bundle/release/app-release.aab
+          asset_path: /home/runner/work/Ludere/Ludere/app/build/intermediates/intermediary_bundle/release/intermediary-bundle.aab
           asset_name: ludere.aab
           asset_content_type: application/apk
