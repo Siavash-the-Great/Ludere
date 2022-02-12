@@ -1,86 +1,119 @@
 package com.draco.ludere.views
-import android.widget.RelativeLayout
-import java.util.*
-import kotlin.system.exitProcess
-import android.net.Uri
-import android.content.Intent
-import android.app.Activity
-import android.app.Service
-import android.content.DialogInterface
-import android.hardware.input.InputManager
-import android.os.Build
-import android.os.Bundle
-import android.view.*
-import android.widget.FrameLayout
 import android.widget.Button
-import androidx.appcompat.app.AlertDialog
+import android.widget.RelativeLayout
+import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.draco.ludere.R
-import com.draco.ludere.gamepad.GamePad
-import com.draco.ludere.gamepad.GamePadConfig
-import com.draco.ludere.input.ControllerInput
-import com.draco.ludere.retroview.RetroView
-import com.draco.ludere.utils.RetroViewUtils
-import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.*
+import ir.tapsell.plus.AdRequestCallback
+import ir.tapsell.plus.AdShowListener
+import ir.tapsell.plus.TapsellPlus
+import ir.tapsell.plus.model.TapsellPlusAdModel
+import ir.tapsell.plus.model.TapsellPlusErrorModel
+import android.widget.LinearLayout
+import androidx.appcompat.widget.AppCompatButton
+import kotlinx.android.synthetic.main.activity_interstitial.*
+import android.content.Intent
+import java.io.File
 
-class MainActivity : AppCompatActivity() {
+class InterstitialActivity : AppCompatActivity() {
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        // val Constraint = findViewById(R.id.Constraint) as ConstraintLayout 
+//        setContentView(com.draco.ludere.R.layout.activity_interstitial)
+//setContentView(Constraint)
+	    val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
+        val file = File(storagePath + "Records.txt")
+	var invertize = " "  //invertize is var that is randomly video or banner id
+        var fileExists = file.exists()
+         if(fileExists){
 
+             var content:String = file.readText()
+             
+             if(content.equals("0")){//video
+               
+                  invertize = "6112e641b0b33b3d9e6f19c7"
+                  //next time banner
+		  file.writeText("1") 
+
+             }
+             else{//banner
+                 
+                 invertize = "6112e668b0b33b3d9e6f19c8"
+                 //next time video
+		 file.writeText("0")
+
+             }
+         
+         
+         }else{ //video
+	          
+                  invertize = "6112e641b0b33b3d9e6f19c7" 
+                 //next time banner
+		 file.writeText("1")  
+        
+	 }//init the first time invertisement randomly
+
+
+
+
+
+//invertize is var that is randomly video or banner id
+        TapsellPlus.requestInterstitialAd(
+                this@InterstitialActivity, invertize ,
+                object : AdRequestCallback() {
+                   
+                    override fun response(tapsellPlusAdModel : TapsellPlusAdModel) {
+                        super.response(tapsellPlusAdModel)
+                        if (isDestroyed())
+                        return   //startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))    
+
+                       var responseId = tapsellPlusAdModel.getResponseId()
+
+                       
+                               TapsellPlus.showInterstitialAd(this@InterstitialActivity, responseId,
+                object : AdShowListener() {
+                   
+                    override fun onOpened(tapsellPlusAdModel : TapsellPlusAdModel) {
+                        super.onOpened(tapsellPlusAdModel)
+                        //showLogToDeveloper("onOpened", Log.DEBUG)
+                    }
+
+                    override fun onClosed(tapsellPlusAdModel : TapsellPlusAdModel) {
+                        super.onClosed(tapsellPlusAdModel)
+                        startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))    
+                    }
+
+                    override fun onError(tapsellPlusErrorModel : TapsellPlusErrorModel) {
+                        super.onError(tapsellPlusErrorModel)
+                       startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))    
+                    }
+                })
+                       
+
+                    }
+
+                    
+                    override fun error(message : String?) {
+                        startActivity(Intent(this@InterstitialActivity, GameActivity::class.java))
+                       // showLogToDeveloper(message, Log.ERROR);
+                    }
+                })
+    
+               
     }
 
-
-    /** Called when the user touches the button */
-    fun start(view: View) {
-        // Do something in response to button click
-        val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
-        start_the_game_button.isEnabled = false
-        start_the_game_button.visibility = View.INVISIBLE
-        val comments = findViewById(R.id.comments) as Button
-        comments.isEnabled = false
-        comments.visibility = View.INVISIBLE
-        val game_page = findViewById(R.id.game_page) as Button
-        game_page.isEnabled = false
-        game_page.visibility = View.INVISIBLE
-        val exit_button = findViewById(R.id.exit_button) as Button
-        exit_button.isEnabled = false
-        exit_button.visibility = View.INVISIBLE
-        val send_email = findViewById(R.id.send_email) as Button
-        send_email.isEnabled = false
-        send_email.visibility = View.INVISIBLE
-        val relative = findViewById(R.id.relative) as RelativeLayout
-        relative.setBackgroundResource(0)
-        val intent = Intent(this, GameActivity::class.java)
-        startActivity(intent)
-    }
-
-    fun sendMsg(view: View) {
-        val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.RingKing")
-        startActivity(openURL)
-    }
-
-    fun sendingEmail(view: View) {
-
-        val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("mailto: siavashiranpak@gmail.com")
-        intent.putExtra(Intent.EXTRA_SUBJECT, "نظر دهی")
-        startActivity(intent)
-
-    }
-
-    fun goToPage(view: View) {
-        val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.RingKing")
-        startActivity(openURL)
-    }
-
-    fun exit_game(view: View) {
-        this@MainActivity.finish()
-        exitProcess(0)
-    }
 
 }
