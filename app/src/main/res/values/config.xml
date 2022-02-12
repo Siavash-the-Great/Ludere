@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- A unique identifier for the app (no spaces or special characters allowed) -->
-    <string name="config_id">examplerom</string>
-
+    <string name="config_id">examplerom</string>    
+    <!-- this name will append to end of (com.draco.ludere.) like:com.draco.ludere.examplerom -->
+    
     <!-- The pretty name for the app -->
     <string name="config_name">Example Rom</string>
 
