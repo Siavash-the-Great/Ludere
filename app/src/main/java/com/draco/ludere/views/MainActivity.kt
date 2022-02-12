@@ -50,6 +50,7 @@ import ir.tapsell.plus.TapsellPlus;
 import ir.tapsell.plus.TapsellPlusInitListener
 import ir.tapsell.plus.model.AdNetworkError
 import ir.tapsell.plus.model.AdNetworks
+import android.net.NetworkCapabilities
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,22 +60,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-	
-	
-		//for publish in pico file and aparat
-		/*
-	val send_email = findViewById(R.id.send_email) as Button
-        send_email.isEnabled = false
-        send_email.visibility = View.GONE
-	val comments = findViewById(R.id.comments) as Button
-        comments.isEnabled = false
-        comments.visibility = View.GONE
-        val game_page = findViewById(R.id.game_page) as Button
-        game_page.isEnabled = false
-        game_page.visibility = View.GONE
-	*/
-       //for publish in pico file and aparat
 	
 		
 	        TapsellPlus.initialize(this@MainActivity, "fddgfcesnqrrhshbdiaoointqngpprcgopitermdndbehspehaamipmfbbrccakqpdaprs" ,
@@ -89,16 +74,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
 	
-	
-	
-	
-	
 	        val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-	 
-
-
-//var dir : File = context.getFilesDir().getParentFile()//context.getExternalFilesDir("pending_downloads")
-  
+	   
         val file = File(storagePath + "Records.txt")
         var fileExists = file.exists()
          if(fileExists){
@@ -243,9 +220,6 @@ class MainActivity : AppCompatActivity() {
             var context: Context = context 
             val roootView = mainActivity
              val BUFFER_SIZE = 4096 * 8
-             val pgsBar = roootView.findViewById(R.id.pBar) as ProgressBar
-            val textView = roootView.findViewById(R.id.textview) as TextView
-	    	val second_start = roootView.findViewById(R.id.second_start) as Button
 	
              val TAG = "MyMessage"
             var current : Double = 0.0
@@ -330,7 +304,7 @@ class MainActivity : AppCompatActivity() {
 			   current += read.toDouble()
 			   if(prev != current / ll_zip * 5) {
                            prev = current / ll_zip * 5
-                           toshoow = prev_copy.toInt() + prev.toInt() + prev_copy2.toInt()     
+                           toshoow = prev_copy.toInt() + prev.toInt()     
 			   publishProgress(""+toshoow)
                            }   
                            bos.write(bytesIn, 0, read)
