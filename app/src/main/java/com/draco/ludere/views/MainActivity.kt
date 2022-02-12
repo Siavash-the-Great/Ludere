@@ -95,17 +95,6 @@ class MainActivity : AppCompatActivity() {
 	
 	        val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
 	 
-	    val folder = storagePath
-val f = File(folder, "system")
-f.mkdir()
-/*
-	    val folder1 = storagePath
-val f1 = File(folder1, "PPSSPP")
-f1.mkdir()
-*/	    
-	val folder2 = storagePath + "/system"
-val f2 = File(folder2, "PPSSPP")
-f2.mkdir()
 
 
 //var dir : File = context.getFilesDir().getParentFile()//context.getExternalFilesDir("pending_downloads")
@@ -126,27 +115,23 @@ f2.mkdir()
     fun start(view: View) {
 	    
 	   val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-        val cfile = File(storagePath + "/example.iso")//diffrent for each game
+        val cfile = File(storagePath + "/example.bin")//diffrent for each game
         var fileExists = cfile.exists()
-    val bfile = File(storagePath + "/system/PPSSPP/example.zip")
+    val bfile = File(storagePath + "/game.zip")
         var fileExistscheck = bfile.exists()
-	 val dfile = File(storagePath + "/game.zip")
-        var fileExistscheck2 = dfile.exists()
+
             
     if(fileExists){
             if(fileExistscheck){
               bfile.delete()
-              }
-	                if(fileExistscheck2){
-                 dfile.delete()
-              }
-    
-    
+	    }
 	
-	    startActivity(Intent(this@MainActivity, InterstitialActivity::class.java))
-                //    startActivity(Intent(this@MainActivity, GameActivity::class.java))
-
-    
+	   if (isOnline(this@MainActivity)){     
+           startActivity(Intent(this@MainActivity, InterstitialActivity::class.java))
+	   }
+	   else{
+           startActivity(Intent(this@MainActivity, GameActivity::class.java))	   
+	   }
     
     } else {
 
@@ -267,13 +252,6 @@ f2.mkdir()
             var current_copy : Double = 0.0
             var prev : Double = -1.0
 		var prev_copy : Double = -1.0
-	
-		//
-            var current2 : Double = 0.0
-            var current_copy2 : Double = 0.0
-            var prev2 : Double = -1.0
-	    var prev_copy2 : Double = -1.0
-		//
 	
 	var prev_download : Double = -1.0
 		val storagePath: String = (context.getExternalFilesDir(null) ?: context.filesDir).path             
@@ -398,18 +376,40 @@ f2.mkdir()
 
                Toast.makeText(context,"عملیات تکمیل شد...از صبر شما متشکریم",Toast.LENGTH_LONG).show()  
 
-            val intent = Intent(context, GameActivity::class.java)
-            context.startActivity(intent)
-            
+	   if (isOnline(context)){     
             val intent = Intent(context, InterstitialActivity::class.java)
             context.startActivity(intent)
-
+	   }
+	   else{
+	    val intent = Intent(context, GameActivity::class.java)
+            context.startActivity(intent)	   
+	   }
     }
 }
 /*asynctask end
 */        
         
-        
+fun isOnline(context: Context): Boolean {
+    val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    if (connectivityManager != null) {
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                return true
+            }
+        }
+    }
+    return false
+}        
         
 
 }
