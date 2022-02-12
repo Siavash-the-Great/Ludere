@@ -8,7 +8,14 @@
 
     <!-- LibRetro core to fetch for this ROM (excluding _libretro_android.so) -->
     <string name="config_core">snes9x</string>
-
+    
+<!-- emulators -->    
+<!-- sega mega drive = genesis_plus_gx -->
+<!-- snes = snes9x -->   
+<!-- nes = quicknes -->   
+<!-- game boy advance and color = mgba -->   
+     
+    
     <!-- Core variables (key=value separated by commas) -->
     <string name="config_variables"></string>
 
