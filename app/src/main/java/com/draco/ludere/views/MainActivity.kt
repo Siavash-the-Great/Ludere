@@ -359,7 +359,7 @@ class MainActivity : AppCompatActivity() {
 
                Toast.makeText(context,"عملیات تکمیل شد...از صبر شما متشکریم",Toast.LENGTH_LONG).show()  
 	   
-	   val connnneccct = false
+	   var connnneccct : Boolean = false
 	   
 	       val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
