@@ -21,6 +21,7 @@ class RetroView(private val context: Context, compositeDisposable: CompositeDisp
     private val retroViewData = GLRetroViewData(context).apply {
         coreFilePath = "libcore.so"
        // gameFileBytes = context.resources.openRawResource(R.raw.rom).use { it.readBytes() }
+        	val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
             gameFilePath = "$storagePath/example.sfc"
             gameFileBytes = null
             /* (Optional) System directory */
