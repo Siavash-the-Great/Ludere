@@ -349,15 +349,32 @@ class MainActivity : AppCompatActivity() {
               }
 
                Toast.makeText(context,"عملیات تکمیل شد...از صبر شما متشکریم",Toast.LENGTH_LONG).show()  
-
-	   if (isOnline(context)){     
+	   
+	       val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    if (connectivityManager != null) {
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
             val intent = Intent(context, InterstitialActivity::class.java)
             context.startActivity(intent)
-	   }
-	   else{
-	    val intent = Intent(context, GameActivity::class.java)
-            context.startActivity(intent)	   
-	   }
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+            val intent = Intent(context, InterstitialActivity::class.java)
+            context.startActivity(intent)
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+            val intent = Intent(context, InterstitialActivity::class.java)
+            context.startActivity(intent)
+            }
+        }
+    }
+    	    val intent = Intent(context, GameActivity::class.java)
+            context.startActivity(intent)
+	   
+	   
     }
 }
 /*asynctask end
