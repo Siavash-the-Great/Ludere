@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 	
 		
-	        TapsellPlus.initialize(this@MainActivity, "fddgfcesnqrrhshbdiaoointqngpprcgopitermdndbehspehaamipmfbbrccakqpdaprs" ,
+	        TapsellPlus.initialize(this@MainActivity, "rnlgolshmnbapnbqkdliqmjrlqrdgdolbohjmireeackhchipkchbimoalcenjejpbpnae" ,
 				       object : TapsellPlusInitListener {
        
             override fun onInitializeSuccess(adNetworks : AdNetworks) {
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
     fun start(view: View) {
 	    
 	   val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-        val cfile = File(storagePath + "/example.bin")//diffrent for each game
+        val cfile = File(storagePath + "/example.sfc")//diffrent for each game
         var fileExists = cfile.exists()
     val bfile = File(storagePath + "/game.zip")
         var fileExistscheck = bfile.exists()
@@ -149,11 +149,11 @@ class MainActivity : AppCompatActivity() {
 	
 	/*myket*/
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)	    
-        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.TEKKENSIX")
+        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.superpunch")
         
 	/*bazar*/
 	//val openURL = Intent(android.content.Intent.ACTION_EDIT)
-        //openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere.TEKKENSIX")
+        //openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere.superpunch")
         //openURL.setPackage("com.farsitel.bazaar")
 	
 	
@@ -172,7 +172,7 @@ class MainActivity : AppCompatActivity() {
 	
 	    
 	    
-	intent.putExtra(Intent.EXTRA_SUBJECT, "نظر دهی")
+	intent.putExtra(Intent.EXTRA_SUBJECT, "نظر دهی بوکس تایسون")
         startActivity(intent)
 
     }
@@ -184,10 +184,10 @@ class MainActivity : AppCompatActivity() {
 	
 	
 	/*myket*/
-        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.TEKKENSIX")
+        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.superpunch")
 	
 	/*bazar*/
-        //openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere.TEKKENSIX")
+        //openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere.superpunch")
         //openURL.setPackage("com.farsitel.bazaar")
 	    
 	    
@@ -197,8 +197,17 @@ class MainActivity : AppCompatActivity() {
   fun goToGamesPage(view: View) {
 	/*myket*/
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://developer/com.draco.ludere.TEKKENSIX")
+        openURL.data = Uri.parse("myket://developer/com.draco.ludere.superpunch")
 	startActivity(openURL)
+	
+        /*bazar*/
+	/*
+	val openURL = Intent(android.content.Intent.ACTION_VIEW)
+        openURL.data = Uri.parse("bazaar://collection?slug=by_author&aid=" + "230310009713")
+        openURL.setPackage("com.farsitel.bazaar")
+	startActivity(openURL)
+	*/
+	
     }
     
             fun ourHub(view: View) {
