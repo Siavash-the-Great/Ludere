@@ -5,7 +5,7 @@ import android.view.Gravity
 import android.widget.FrameLayout
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-//import com.draco.ludere.R
+import com.draco.ludere.R
 import com.draco.ludere.repositories.Storage
 import com.swordfish.libretrodroid.GLRetroView
 import com.swordfish.libretrodroid.GLRetroViewData
