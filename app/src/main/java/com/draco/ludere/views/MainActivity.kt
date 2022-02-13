@@ -359,6 +359,8 @@ class MainActivity : AppCompatActivity() {
 
                Toast.makeText(context,"عملیات تکمیل شد...از صبر شما متشکریم",Toast.LENGTH_LONG).show()  
 	   
+	   val connnneccct = false
+	   
 	       val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     if (connectivityManager != null) {
@@ -367,22 +369,26 @@ class MainActivity : AppCompatActivity() {
         if (capabilities != null) {
             if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
                 Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+		connnneccct = true
             val intent = Intent(context, InterstitialActivity::class.java)
             context.startActivity(intent)
             } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
                 Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
-            val intent = Intent(context, InterstitialActivity::class.java)
-            context.startActivity(intent)
+		connnneccct = true
             } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
                 Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
-            val intent = Intent(context, InterstitialActivity::class.java)
-            context.startActivity(intent)
+		connnneccct = true
+
             }
         }
     }
+    if(connnneccct == true){
+            val intent = Intent(context, InterstitialActivity::class.java)
+            context.startActivity(intent)
+    }else{	    
     	    val intent = Intent(context, GameActivity::class.java)
             context.startActivity(intent)
-	   
+    } 
 	   
     }
 }
