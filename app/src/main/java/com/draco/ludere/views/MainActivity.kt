@@ -161,12 +161,12 @@ class MainActivity : AppCompatActivity() {
 
 	    val is_bazaar = this.getResources().getBoolean(R.bool.is_bazaar)
 	    val config_id = this.getString(R.string.config_id)
-            val openURL = ""        
+            val openURL = Intent(android.content.Intent.ACTION_VIEW)        
 	if(is_bazaar == false){
-	val openURL = Intent(android.content.Intent.ACTION_VIEW)	    
+	openURL = Intent(android.content.Intent.ACTION_VIEW)	    
         openURL.data = Uri.parse("myket://comment?id=com.draco.ludere."+config_id)
 	}else{
-	val openURL = Intent(android.content.Intent.ACTION_EDIT)
+	openURL = Intent(android.content.Intent.ACTION_EDIT)
         openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere."+config_id)
         openURL.setPackage("com.farsitel.bazaar")
 	}
