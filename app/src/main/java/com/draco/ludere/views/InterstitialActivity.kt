@@ -15,6 +15,7 @@ import androidx.appcompat.widget.AppCompatButton
 import kotlinx.android.synthetic.main.activity_interstitial.*
 import android.content.Intent
 import java.io.File
+import com.draco.ludere.R
 
 class InterstitialActivity : AppCompatActivity() {
 
