@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-	val is_bazaar = this.getBoolean(R.bool.is_bazaar)
+	val is_bazaar = this.getResources().getBoolean(R.bool.is_bazaar)
         if (is_bazaar == false){      
 	val hamibash_button = findViewById(R.id.hamibash_button) as Button
         hamibash_button.isEnabled = false
@@ -159,7 +159,7 @@ class MainActivity : AppCompatActivity() {
 
     fun sendMsg(view: View) {
 
-	    val is_bazaar = this.getBoolean(R.bool.is_bazaar)
+	    val is_bazaar = this.getResources().getBoolean(R.bool.is_bazaar)
 	    val config_id = this.getString(R.string.config_id)
             val openURL = ""        
 	if(is_bazaar == false){
@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity() {
     fun sendingEmail(view: View) {
 
         val intent = Intent(Intent.ACTION_SENDTO)
-        val is_bazaar = this.getBoolean(R.bool.is_bazaar)
+        val is_bazaar = this.getResources().getBoolean(R.bool.is_bazaar)
 	val config_name = this.getString(R.string.config_name)
 	
 	if(is_bazaar == false)
@@ -193,7 +193,7 @@ class MainActivity : AppCompatActivity() {
     fun goToPage(view: View) {
         
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        val is_bazaar = this.getBoolean(R.bool.is_bazaar)
+        val is_bazaar = this.getResources().getBoolean(R.bool.is_bazaar)
 	val config_id = this.getString(R.string.config_id)
 	
 	if(is_bazaar == false){
@@ -208,7 +208,7 @@ class MainActivity : AppCompatActivity() {
   
   fun goToGamesPage(view: View) {
 	  
-        val is_bazaar = this.getBoolean(R.bool.is_bazaar)
+        val is_bazaar = this.getResources().getBoolean(R.bool.is_bazaar)
 	val config_id = this.getString(R.string.config_id)
 	  
         if(is_bazaar == false){
