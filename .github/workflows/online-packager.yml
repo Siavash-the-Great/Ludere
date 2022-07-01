@@ -25,6 +25,21 @@ jobs:
  #       run: |
  #         mkdir -p ./app/src/main/res/raw/
  #         curl -L# "${{ github.event.inputs.romURL }}" > ./app/src/main/res/raw/rom
+
+      - name: convert icon to png
+        run: if  test -f ./app/icon.jpg ; then convert ./app/icon.jpg -resize 512x512 ./app/icon.png; elif test -f ./app/icon.jpeg ; then convert ./app/icon.jpeg -resize 512x512 ./app/icon.png; fi
+    #  - name: remove current icons
+     #    run: rm -f ./app/src/main/res/drawable-hdpi/ic_launcher.png /home/runner/work/dolphin/dolphin/Source/Android/app/src/main/res/drawable-xhdpi/ic_launcher.png /home/runner/work/dolphin/dolphin/Source/Android/app/src/main/res/drawable-xxhdpi/ic_launcher.png /home/runner/work/dolphin/dolphin/Source/Android/app/src/main/res/drawable-xxxhdpi/ic_launcher.png /home/runner/work/dolphin/dolphin/Source/Android/app/src/main/res/drawable-mdpi/ic_launcher.png /home/runner/work/dolphin/dolphin/Source/Android/app/src/main/res/drawable-ldpi/ic_launcher.png
+      - name: convert for hdpi
+        run: convert ./app/icon.png -resize 72x72 ./app/src/main/res/mipmap-hdpi/icon.png
+      - name: convert for xhdpi
+        run: convert ./app/icon.png -resize 96x96 ./app/src/main/res/mipmap-xhdpi/icon.png
+      - name: convert for xxhdpi
+        run: convert ./app/icon.png -resize 144x144 ./app/src/main/res/mipmap-xxhdpi/icon.png
+      - name: convert for xxxhdpi
+        run: convert ./app/icon.png -resize 192x192 ./app/src/main/res/mipmap-xxxhdpi/icon.png
+      - name: convert for mdpi
+        run: convert ./app/icon.png -resize 48x48 ./app/src/main/res/mipmap-mdpi/icon.png
       
       - name: Build Release APK
         run: |
