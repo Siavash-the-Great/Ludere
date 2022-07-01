@@ -72,8 +72,8 @@ class MainActivity : AppCompatActivity() {
         hamibash_button.isEnabled = false
         hamibash_button.visibility = View.GONE	
        }
-		
-	        TapsellPlus.initialize(this@MainActivity, "rnlgolshmnbapnbqkdliqmjrlqrdgdolbohjmireeackhchipkchbimoalcenjejpbpnae" ,
+			    val tapsell_key = this.getString(R.string.tapsell_key)
+	        TapsellPlus.initialize(this@MainActivity, tapsell_key ,
 				       object : TapsellPlusInitListener {
        
             override fun onInitializeSuccess(adNetworks : AdNetworks) {
