@@ -8,6 +8,16 @@
     <string name="config_name">بوکس تایسون</string>
 
     
+    <!-- tapsell key -->
+    <string name="tapsell_key">ktomaboqrohafkoijoaatedrteqfinkantmosnlhoerfcpsfsjjjirbogmtomtprphcshb</string>
+    
+    <!-- tapsell video key -->
+    <string name="tapsell_video">62bc4ce2cd9cb947b4c0bdcd</string>
+
+    <!-- tapsell banner key -->
+    <string name="tapsell_banner">62bc4d04cd9cb947b4c0bdce</string>
+    
+    
     <!-- true for bazaar , false for myket -->
     <bool name="is_bazaar">false</bool>
     
