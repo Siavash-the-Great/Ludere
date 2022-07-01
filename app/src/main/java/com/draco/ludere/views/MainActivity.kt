@@ -92,7 +92,8 @@ class MainActivity : AppCompatActivity() {
     fun start(view: View) {
 	    
 	   val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-        val cfile = File(storagePath + "/example.sfc")//diffrent for each game
+	    val game_format = context.getString(R.string.game_format)
+        val cfile = File(storagePath + "/example."+game_format)//diffrent for each game
         var fileExists = cfile.exists()
     val bfile = File(storagePath + "/game.zip")
         var fileExistscheck = bfile.exists()
