@@ -52,15 +52,26 @@ import ir.tapsell.plus.model.AdNetworkError
 import ir.tapsell.plus.model.AdNetworks
 import android.net.NetworkCapabilities
 
+
+import android.content.res.Resources
+
+
 class MainActivity : AppCompatActivity() {
 
-    
+     private val resources: Resources
+
      val BUFFER_SIZE = 4096 * 8
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 	
+	val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+        if (is_bazaar == false){      
+	val hamibash_button = findViewById(R.id.hamibash_button) as Button
+        hamibash_button.isEnabled = false
+        hamibash_button.visibility = View.GONE	
+       }
 		
 	        TapsellPlus.initialize(this@MainActivity, "rnlgolshmnbapnbqkdliqmjrlqrdgdolbohjmireeackhchipkchbimoalcenjejpbpnae" ,
 				       object : TapsellPlusInitListener {
@@ -113,7 +124,6 @@ class MainActivity : AppCompatActivity() {
     
     } else {
 
-	    
         // Do something in response to button click
         val start_the_game_button = findViewById(R.id.start_the_game_button) as Button
         start_the_game_button.isEnabled = false
@@ -136,6 +146,9 @@ class MainActivity : AppCompatActivity() {
 	val start_the_hub = findViewById(R.id.start_the_hub) as Button
         start_the_hub.isEnabled = false
         start_the_hub.visibility = View.GONE      
+        val hamibash_button = findViewById(R.id.hamibash_button) as Button
+        hamibash_button.isEnabled = false
+        hamibash_button.visibility = View.GONE
         val relative = findViewById(R.id.relative) as RelativeLayout
         relative.setBackgroundResource(0)
         relative.setBackgroundColor(Color.parseColor("#000000"))
@@ -147,16 +160,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sendMsg(view: View) {
-	
-	/*myket*/
+
+	    val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+	    val config_id = this.getString(R.string.config_id)
+
+	if(is_bazaar == false){
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)	    
-        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere.superpunch")
-        
-	/*bazar*/
-	//val openURL = Intent(android.content.Intent.ACTION_EDIT)
-        //openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere.superpunch")
-        //openURL.setPackage("com.farsitel.bazaar")
-	
+        openURL.data = Uri.parse("myket://comment?id=com.draco.ludere."+config_id)
+	}else{
+	val openURL = Intent(android.content.Intent.ACTION_EDIT)
+        openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere."+config_id)
+        openURL.setPackage("com.farsitel.bazaar")
+	}
 	
         startActivity(openURL)
     }
@@ -164,50 +179,50 @@ class MainActivity : AppCompatActivity() {
     fun sendingEmail(view: View) {
 
         val intent = Intent(Intent.ACTION_SENDTO)
-        
-	    
-	/*myket*/
-	intent.data = Uri.parse("mailto: siavashiranpak@gmail.com")
-        /*bazar*/
-        //intent.data = Uri.parse("mailto: 00sohrabiranpak00@gmail.com")        
+        val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+	val config_name = this.getString(R.string.config_name)
 	
-	    
-	    
-	intent.putExtra(Intent.EXTRA_SUBJECT, "نظر دهی بوکس تایسون")
+	if(is_bazaar == false)
+ 	intent.data = Uri.parse("mailto: siavashiranpak@gmail.com")
+        else
+        intent.data = Uri.parse("mailto: 00sohrabiranpak00@gmail.com")        
+	
+	intent.putExtra(Intent.EXTRA_SUBJECT, "نظر دهی "+config_name)
         startActivity(intent)
 
     }
 
     fun goToPage(view: View) {
         
-	//for both
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)
+        val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+	val config_id = this.getString(R.string.config_id)
 	
-	
-	/*myket*/
-        openURL.data = Uri.parse("myket://details?id=com.draco.ludere.superpunch")
-	
-	/*bazar*/
-        //openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere.superpunch")
-        //openURL.setPackage("com.farsitel.bazaar")
-	    
+	if(is_bazaar == false){
+        openURL.data = Uri.parse("myket://details?id=com.draco.ludere."+config_id)
+	}else{
+	openURL.data = Uri.parse("bazaar://details?id=com.draco.ludere."+config_id)
+        openURL.setPackage("com.farsitel.bazaar")
+	}   
 	    
 	startActivity(openURL)
     }
   
   fun goToGamesPage(view: View) {
-	/*myket*/
+	  
+        val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+	val config_id = this.getString(R.string.config_id)
+	  
+        if(is_bazaar == false){
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        openURL.data = Uri.parse("myket://developer/com.draco.ludere.superpunch")
+        openURL.data = Uri.parse("myket://developer/com.draco.ludere."+config_id)
 	startActivity(openURL)
-	
-        /*bazar*/
-	/*
+	}else{
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)
         openURL.data = Uri.parse("bazaar://collection?slug=by_author&aid=" + "230310009713")
         openURL.setPackage("com.farsitel.bazaar")
 	startActivity(openURL)
-	*/
+	}
 	
     }
     
