@@ -8,6 +8,9 @@
     <string name="config_name">بوکس تایسون</string>
 
     
+    <!-- true for bazaar , false for myket -->
+    <bool name="is_bazaar">false</bool>
+    
     
 <!-- emulators -->    
 <!-- sega mega drive = genesis_plus_gx -->
