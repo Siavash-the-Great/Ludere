@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity() {
 
 	    val is_bazaar = this.getResources().getBoolean(R.bool.is_bazaar)
 	    val config_id = this.getString(R.string.config_id)
-            val openURL = Intent(android.content.Intent.ACTION_VIEW)        
+            var openURL = Intent(android.content.Intent.ACTION_VIEW)        
 	if(is_bazaar == false){
 	openURL = Intent(android.content.Intent.ACTION_VIEW)	    
         openURL.data = Uri.parse("myket://comment?id=com.draco.ludere."+config_id)
