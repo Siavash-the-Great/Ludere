@@ -58,15 +58,13 @@ import android.content.res.Resources
 
 class MainActivity : AppCompatActivity() {
 
-     private val resources: Resources
-
      val BUFFER_SIZE = 4096 * 8
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-	
-	val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+
+	val is_bazaar = this.getBoolean(R.bool.is_bazaar)
         if (is_bazaar == false){      
 	val hamibash_button = findViewById(R.id.hamibash_button) as Button
         hamibash_button.isEnabled = false
@@ -103,7 +101,7 @@ class MainActivity : AppCompatActivity() {
     fun start(view: View) {
 	    
 	   val storagePath: String = (this.getExternalFilesDir(null) ?: this.filesDir).path
-	    val game_format = context.getString(R.string.game_format)
+	    val game_format = this.getString(R.string.game_format)
         val cfile = File(storagePath + "/example."+game_format)//diffrent for each game
         var fileExists = cfile.exists()
     val bfile = File(storagePath + "/game.zip")
@@ -161,9 +159,9 @@ class MainActivity : AppCompatActivity() {
 
     fun sendMsg(view: View) {
 
-	    val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+	    val is_bazaar = this.getBoolean(R.bool.is_bazaar)
 	    val config_id = this.getString(R.string.config_id)
-
+            val openURL = ""        
 	if(is_bazaar == false){
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)	    
         openURL.data = Uri.parse("myket://comment?id=com.draco.ludere."+config_id)
@@ -179,7 +177,7 @@ class MainActivity : AppCompatActivity() {
     fun sendingEmail(view: View) {
 
         val intent = Intent(Intent.ACTION_SENDTO)
-        val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+        val is_bazaar = this.getBoolean(R.bool.is_bazaar)
 	val config_name = this.getString(R.string.config_name)
 	
 	if(is_bazaar == false)
@@ -195,7 +193,7 @@ class MainActivity : AppCompatActivity() {
     fun goToPage(view: View) {
         
 	val openURL = Intent(android.content.Intent.ACTION_VIEW)
-        val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+        val is_bazaar = this.getBoolean(R.bool.is_bazaar)
 	val config_id = this.getString(R.string.config_id)
 	
 	if(is_bazaar == false){
@@ -210,7 +208,7 @@ class MainActivity : AppCompatActivity() {
   
   fun goToGamesPage(view: View) {
 	  
-        val is_bazaar = resources.getBoolean(R.bool.is_bazaar)
+        val is_bazaar = this.getBoolean(R.bool.is_bazaar)
 	val config_id = this.getString(R.string.config_id)
 	  
         if(is_bazaar == false){
@@ -231,6 +229,13 @@ class MainActivity : AppCompatActivity() {
         openURL.data = Uri.parse("http://sandsbros.ctcin.bio")
 	startActivity(openURL)
     }
+    
+    	fun hamibash(view: View) {	
+       	val openURL = Intent(android.content.Intent.ACTION_VIEW)
+        openURL.data = Uri.parse("https://hamibash.com/sands")
+	startActivity(openURL)
+    }	
+    
     
     fun exit_game(view: View) {
         this@MainActivity.finish()
