@@ -43,16 +43,16 @@ class InterstitialActivity : AppCompatActivity() {
              var content:String = file.readText()
              
              if(content.equals("0")){//video
-               
-                  invertize = "61fe2218672eaf7488728bc8"
+               	   val tapsell_video = this.getString(R.string.tapsell_video)
+                   invertize = tapsell_video
                   //next time banner
 		  file.writeText("1") 
 
              }
              else{//banner
                  
-                 invertize = "61fe223b17926f05586d9bcf"
-                 //next time video
+               	   val tapsell_banner = this.getString(R.string.tapsell_banner)
+                   invertize = tapsell_banner
 		 file.writeText("0")
 
              }
@@ -60,7 +60,8 @@ class InterstitialActivity : AppCompatActivity() {
          
          }else{ //video
 	          
-                  invertize = "61fe2218672eaf7488728bc8" 
+                   val tapsell_video = this.getString(R.string.tapsell_video)
+                   invertize = tapsell_video
                  //next time banner
 		 file.writeText("1")  
         
