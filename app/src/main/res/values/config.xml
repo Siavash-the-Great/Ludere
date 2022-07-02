@@ -19,7 +19,7 @@
     
     
     <!-- true for bazaar , false for myket -->
-    <bool name="is_bazaar">true</bool>
+    <bool name="is_bazaar">false</bool>
     
     
 <!-- emulators -->    
