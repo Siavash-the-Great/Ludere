@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- A unique identifier for the app (no spaces or special characters allowed) -->
-    <string name="config_id">marvelGenesis</string>    
+    <string name="config_id">sor2Complete</string>    
     <!-- this name will append to end of (com.draco.ludere.) like:com.draco.ludere.examplerom -->
     
     <!-- The pretty name for the app -->
-    <string name="config_name">شورش در شهر مارول</string>
+    <string name="config_name">شورش در شهر 2 کامل</string>
 
     
     <!-- tapsell key -->
-    <string name="tapsell_key">nigfdscqeriemelehkgrfctksoigrkghsbjardcptjqflfatokmepbhnhddbkqrrlaotob</string>
+    <string name="tapsell_key">ffojfilsscnbjilhbaqnspenatheqcqqfnptdrhdslankaiqmirhafehjabaphiimoojpa</string>
     
     <!-- tapsell video key -->
-    <string name="tapsell_video">62bfb337cd9cb947b4c0bdf2</string>
+    <string name="tapsell_video">62bfb768cd9cb947b4c0bdf4</string>
 
     <!-- tapsell banner key -->
-    <string name="tapsell_banner">62bfb348cd9cb947b4c0bdf3</string>
+    <string name="tapsell_banner">62bfb77dcd9cb947b4c0bdf5</string>
     
     
     <!-- true for bazaar , false for myket -->
