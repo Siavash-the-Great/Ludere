@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- A unique identifier for the app (no spaces or special characters allowed) -->
-    <string name="config_id">genesisPes2021</string>    
+    <string name="config_id">genesisPes2020</string>    
     <!-- this name will append to end of (com.draco.ludere.) like:com.draco.ludere.examplerom -->
     
     <!-- The pretty name for the app -->
-    <string name="config_name">فوتبال سگا 2021</string>
+    <string name="config_name">فوتبال سگا 2020</string>
 
     
     <!-- tapsell key -->
-    <string name="tapsell_key">iishglatmdntjsohfpdhqmigdmpltptrhaiffggmosacjnohnocashahtnnilccdsldtad</string>
+    <string name="tapsell_key">gtrcgjhnbrgmcakssboftlhcgetsnajbcbrmednjehpdinqpqelokqgnpgnpfkihmshkip</string>
     
     <!-- tapsell video key -->
-    <string name="tapsell_video">62bf9dd2ae66b457b553d11b</string>
+    <string name="tapsell_video">62bfac4ecd9cb947b4c0bdf1</string>
 
     <!-- tapsell banner key -->
-    <string name="tapsell_banner">62bf9de69e24ba13d921b662</string>
+    <string name="tapsell_banner">62bfac699e24ba13d921b664</string>
     
     
     <!-- true for bazaar , false for myket -->
