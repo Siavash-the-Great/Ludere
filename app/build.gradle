@@ -16,8 +16,8 @@ android {
         applicationId "com.draco.ludere.${configValue('config_id')}"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 3
-        versionName '3.0'
+        versionCode 1234
+        versionName '1234'
         resConfigs 'en'
         multiDexEnabled true
         buildConfigField "String", "TAPSELL_KEY", "\"ssfskoqkojqmpdtfpbiidrbamjjitdfhhepjrhepprfppatigbpgrhdnqfgiciefntdahq\""
